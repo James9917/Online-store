@@ -1,0 +1,52 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="../includes/head.html" -->
+    <title>Tienda - Catálogo</title>
+    <meta name="description" content="Catálogo de tecnología en Tienda: precios, marcas y tipos.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script src="../js/app.js" defer></script>
+    <script src="../js/categoria.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <nav class="miga" id="miga"><a href="../index.html">Inicio</a><span>/</span><span>Catálogo</span></nav>
+
+        <h1 class="titulo-pagina" id="titulo-categoria">Catálogo</h1>
+
+        <!-- Filtros de búsqueda -->
+        <form class="filtros" method="get" action="categoria.html" id="filtros">
+            <input type="hidden" name="categoria" id="f-categoria" value="">
+            <input type="search" name="q" id="f-q" class="filtro-busqueda" placeholder="Buscar productos...">
+            <select name="marca" id="f-marca" class="filtro-select"><option value="">Todas las marcas</option></select>
+            <select name="tipo" id="f-tipo" class="filtro-select"><option value="">Todos los tipos</option></select>
+            <select name="orden" id="f-orden" class="filtro-select">
+                <option value="novedades">Más recientes</option>
+                <option value="precio_asc">Precio: menor a mayor</option>
+                <option value="precio_desc">Precio: mayor a menor</option>
+                <option value="nombre">Nombre: A-Z</option>
+            </select>
+            <button type="submit" class="filtro-boton">Filtrar</button>
+        </form>
+
+        <p class="catalogo-info" id="info"></p>
+
+        <!-- Resultados -->
+        <div class="grid" id="grid">
+            <p class="aviso">Cargando productos...</p>
+        </div>
+
+        <!-- Paginación -->
+        <div class="paginacion" id="paginacion"></div>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="../includes/footer.html" -->
+</body>
+</html>

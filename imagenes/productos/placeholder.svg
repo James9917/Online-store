@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#1b1b1b"/>
+  <rect x="60" y="60" width="280" height="280" rx="10" fill="none" stroke="#FF5733" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="200" y="185" font-family="Arial, sans-serif" font-size="22" fill="#FF5733" text-anchor="middle">Producto</text>
+  <text x="200" y="215" font-family="Arial, sans-serif" font-size="16" fill="#aaa" text-anchor="middle">Imagen disponible pronto</text>
+</svg>

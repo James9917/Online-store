@@ -1,0 +1,107 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="../includes/head.html" -->
+    <title>Tienda - Finalizar compra</title>
+    <meta name="description" content="Completa tus datos y elige cómo pagar en Tienda.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script src="../js/app.js" defer></script>
+    <script src="../js/checkout.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <nav class="miga" id="miga">
+            <a href="../index.html">Inicio</a><span>/</span><a href="carrito.html">Carrito</a><span>/</span><span>Finalizar compra</span>
+        </nav>
+
+        <h1 class="titulo-pagina">Finalizar compra</h1>
+
+        <p class="catalogo-info" id="checkout-aviso"></p>
+
+        <form id="form-checkout" class="checkout" novalidate>
+            <div class="checkout-formulario">
+                <!-- Datos de contacto -->
+                <section class="checkout-seccion">
+                    <h2 class="checkout-titulo">Datos de contacto</h2>
+
+                    <label class="modal-campo" for="co-nombre">Nombre y apellidos *</label>
+                    <input type="text" id="co-nombre" class="modal-input" autocomplete="name" required>
+
+                    <label class="modal-campo" for="co-correo">Correo electrónico *</label>
+                    <input type="email" id="co-correo" class="modal-input" autocomplete="email" required>
+
+                    <label class="modal-campo" for="co-telefono">Teléfono</label>
+                    <input type="tel" id="co-telefono" class="modal-input" autocomplete="tel">
+
+                    <label class="modal-campo" for="co-direccion">Dirección de entrega</label>
+                    <input type="text" id="co-direccion" class="modal-input" autocomplete="street-address">
+                </section>
+
+                <!-- Método de pago -->
+                <section class="checkout-seccion">
+                    <h2 class="checkout-titulo">Método de pago</h2>
+                    <div id="metodos-pago"></div>
+
+                    <div id="pago-tarjeta" class="checkout-subseccion" hidden>
+                        <label class="modal-campo" for="co-titular">Titular de la tarjeta</label>
+                        <input type="text" id="co-titular" class="modal-input" autocomplete="cc-name">
+
+                        <label class="modal-campo" for="co-tarjeta">Número de tarjeta</label>
+                        <input type="text" id="co-tarjeta" class="modal-input" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000">
+
+                        <div class="checkout-fila">
+                            <div>
+                                <label class="modal-campo" for="co-vencimiento">Vencimiento</label>
+                                <input type="text" id="co-vencimiento" class="modal-input" placeholder="MM/AA" autocomplete="cc-exp">
+                            </div>
+                            <div>
+                                <label class="modal-campo" for="co-cvv">CVV</label>
+                                <input type="text" id="co-cvv" class="modal-input" inputmode="numeric" autocomplete="cc-csc" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pago-transferencia" class="checkout-subseccion" hidden>
+                        <p class="checkout-nota">Realiza una transferencia a:<br>
+                        <strong>Banco Ejemplo</strong> · Cuenta 000-123456-78<br>
+                        Titular: Tienda S.A.</p>
+                        <label class="modal-campo" for="co-referencia">Número de referencia de la transferencia</label>
+                        <input type="text" id="co-referencia" class="modal-input">
+                    </div>
+
+                    <div id="pago-efectivo" class="checkout-subseccion" hidden>
+                        <p class="checkout-nota">Paga en efectivo al retirar tu pedido en tienda.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Resumen del pedido -->
+            <aside class="checkout-resumen">
+                <h2 class="checkout-titulo">Tu pedido</h2>
+                <div id="resumen-items">
+                    <p class="aviso">Cargando resumen...</p>
+                </div>
+                <div class="checkout-totales">
+                    <p>Subtotal: <strong id="r-subtotal">$0.00</strong></p>
+                    <p>Envío: <strong id="r-envio">$0.00</strong></p>
+                    <p class="checkout-total">Total: <strong id="r-total">$0.00</strong></p>
+                </div>
+
+                <div id="co-msg"></div>
+
+                <button type="submit" class="filtro-boton checkout-boton">Confirmar compra</button>
+                <p class="checkout-legales">Al confirmar aceptas el procesamiento de tu pedido y el pago del importe indicado.</p>
+            </aside>
+        </form>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="../includes/footer.html" -->
+</body>
+</html>

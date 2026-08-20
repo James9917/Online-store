@@ -1,0 +1,40 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="includes/head.html" -->
+    <title>Tienda - Inicio</title>
+    <meta name="description" content="Tienda de tecnología: gaming, computadoras, celulares, componentes, mobiliario y almacenamiento.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Scripts -->
+    <script src="js/app.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/slider.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Banner principal (slider accesible, sin dependencias) -->
+    <section class="slider" id="slider" aria-roledescription="carrusel" aria-label="Promociones destacadas">
+        <div class="slider-viewport" id="slider-viewport">
+            <ul class="slider-track" id="slider-track"></ul>
+        </div>
+        <button type="button" class="slider-btn slider-btn-anterior" data-slider-anterior aria-label="Diapositiva anterior">&#8249;</button>
+        <button type="button" class="slider-btn slider-btn-siguiente" data-slider-siguiente aria-label="Diapositiva siguiente">&#8250;</button>
+        <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Elegir diapositiva"></div>
+        <div class="sr-only" id="slider-live" aria-live="polite"></div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <h1 class="titulo-pagina">Productos destacados</h1>
+        <div class="grid" id="destacados">
+            <p class="aviso">Cargando productos...</p>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="includes/footer.html" -->
+</body>
+</html>

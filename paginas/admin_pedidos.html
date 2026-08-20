@@ -1,0 +1,48 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="../includes/head.html" -->
+    <title>Tienda - Pedidos</title>
+    <meta name="description" content="Gestión de pedidos de Tienda.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script src="../js/app.js" defer></script>
+    <script src="../js/admin_pedidos.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <nav class="miga" id="miga">
+            <a href="../index.html">Inicio</a><span>/</span><span>Pedidos</span>
+        </nav>
+
+        <h1 class="titulo-pagina">Gestión de pedidos</h1>
+
+        <!-- Filtros -->
+        <form class="filtros" method="get" action="admin_pedidos.html" id="form-filtros">
+            <input type="search" name="q" id="p-q" class="filtro-busqueda" placeholder="Buscar por cliente, correo, usuario o número...">
+            <select name="estado" id="p-estado" class="filtro-select">
+                <option value="">Todos los estados</option>
+                <option value="pendiente">pendiente</option>
+                <option value="pagado">pagado</option>
+                <option value="enviado">enviado</option>
+                <option value="entregado">entregado</option>
+                <option value="cancelado">cancelado</option>
+            </select>
+            <button type="submit" class="filtro-boton">Filtrar</button>
+            <a class="filtro-boton filtro-boton-secundario" href="admin_pedidos.html" id="limpiar">Limpiar</a>
+        </form>
+
+        <div id="pedidos-admin">
+            <p class="aviso">Cargando pedidos...</p>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="../includes/footer.html" -->
+</body>
+</html>

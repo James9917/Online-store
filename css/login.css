@@ -1,0 +1,197 @@
+/*
+ * Copyright (C) 2026 James Shewbridge
+ * Licensed under the GNU General Public License v3.0.
+ * See LICENSE file in the project root for full license text.
+ */
+/* =========================================================
+   Tienda - Estilos de login y registro (responsive)
+   ========================================================= */
+
+:root {
+    --color-primario: #FF5733;
+    --color-primario-oscuro: #e04a2a;
+    --color-texto: #f4f4f4;
+    --color-borde: #333333;
+    --color-exito: #6fdd9a;
+    --color-error: #ff8a8a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #141414 url('../imagenes/fondos/fondo2.jpg') center / cover no-repeat fixed;
+    color: var(--color-texto);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.auth-enlace {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 10;
+}
+.auth-enlace:hover {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--color-borde);
+    border-left: 5px solid var(--color-primario);
+    border-radius: 0 18px 18px 18px;
+    padding: 36px 26px 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-box h1 {
+    color: var(--color-primario);
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-box p,
+.login-box label {
+    display: block;
+    color: var(--color-primario);
+    font-weight: 600;
+    font-size: 14px;
+    margin: 14px 0 4px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"],
+.login-box input[type="email"],
+.login-box select {
+    width: 100%;
+    padding: 11px 12px;
+    border: none;
+    border-bottom: 2px solid var(--color-primario);
+    background: transparent;
+    color: var(--color-texto);
+    font-size: 15px;
+    outline: none;
+}
+
+.login-box input::placeholder { color: #888; }
+
+.login-box select {
+    background: #000;
+    border: 1px solid var(--color-primario);
+    border-bottom: 2px solid var(--color-primario);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-box input[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.login-box input[type="submit"]:hover {
+    background: #000;
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+}
+
+.auth-link {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-texto) !important;
+    font-weight: 400 !important;
+    margin-top: 16px;
+}
+.auth-link a { color: var(--color-primario); }
+
+.msg_error,
+.msg_save {
+    display: block;
+    margin-top: 14px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.msg_error {
+    color: var(--color-error);
+    background: rgba(255, 60, 60, 0.12);
+    border: 1px solid #ff5a5a;
+}
+.msg_save {
+    color: var(--color-exito);
+    background: rgba(60, 255, 120, 0.08);
+    border: 1px solid #4cc877;
+}
+.msg_save a { color: var(--color-exito); text-decoration: underline; }
+
+.hp-campo {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .login-box { padding: 28px 18px 22px; }
+    .auth-enlace { top: 10px; left: 10px; font-size: 13px; padding: 6px 10px; }
+}
+
+/* ---- Accesibilidad ---- */
+:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+}
+.login-box input[type="text"]:focus-visible,
+.login-box input[type="password"]:focus-visible,
+.login-box input[type="email"]:focus-visible,
+.login-box select:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 0;
+    border-bottom-color: var(--color-primario);
+}
+.auth-enlace:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

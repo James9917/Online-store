@@ -1,0 +1,167 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="../includes/head.html" -->
+    <title>Tienda - Gestión</title>
+    <meta name="description" content="Gestión de usuarios de Tienda.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script src="../js/app.js" defer></script>
+    <script src="../js/admin.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <nav class="miga" id="miga">
+            <a href="../index.html">Inicio</a><span>/</span><span>Gestión</span>
+        </nav>
+
+        <h1 class="titulo-pagina">Panel de administración</h1>
+
+        <!-- Pestañas -->
+        <div class="pestanas" role="tablist" aria-label="Secciones de administración">
+            <button type="button" class="pestana activa" id="pest-usuarios" role="tab" aria-selected="true" data-seccion="usuarios">Usuarios</button>
+            <button type="button" class="pestana" id="pest-productos" role="tab" aria-selected="false" data-seccion="productos">Productos</button>
+            <button type="button" class="pestana" id="pest-slider" role="tab" aria-selected="false" data-seccion="slider">Slider</button>
+        </div>
+
+        <!-- Sección Usuarios -->
+        <section id="seccion-usuarios">
+            <!-- Búsqueda de usuarios -->
+            <form class="filtros" method="get" action="admin.html" id="form-buscar">
+                <input type="search" name="q" id="b-q" class="filtro-busqueda" placeholder="Buscar por nombre, usuario, correo o rol...">
+                <button type="submit" class="filtro-boton">Buscar</button>
+                <a class="filtro-boton filtro-boton-secundario" href="admin.html" id="limpiar">Limpiar</a>
+            </form>
+
+            <!-- Tabla de usuarios -->
+            <div id="admin-contenido">
+                <p class="aviso">Cargando...</p>
+            </div>
+        </section>
+
+        <!-- Sección Productos -->
+        <section id="seccion-productos" hidden>
+            <!-- Búsqueda de productos -->
+            <form class="filtros" id="form-buscar-p">
+                <input type="search" name="q" id="b-p" class="filtro-busqueda" placeholder="Buscar por nombre, marca, tipo o categoría...">
+                <button type="submit" class="filtro-boton">Buscar</button>
+                <button type="button" class="filtro-boton filtro-boton-secundario" id="limpiar-p">Limpiar</button>
+            </form>
+
+            <div class="admin-barra">
+                <button type="button" id="btn-nuevo-producto" class="filtro-boton">+ Agregar producto</button>
+            </div>
+
+            <!-- Tabla de productos -->
+            <div id="admin-contenido-productos">
+                <p class="aviso">Cargando...</p>
+            </div>
+        </section>
+
+        <!-- Sección Slider -->
+        <section id="seccion-slider" hidden>
+            <form class="filtros" id="form-slider-subir">
+                <input type="file" id="sl-imagen" class="slider-input" accept="image/jpeg,image/png,image/webp,image/gif" required>
+                <button type="submit" class="filtro-boton">Subir imagen</button>
+            </form>
+            <p class="aviso slider-aviso">JPG, PNG, WEBP o GIF · máx. 2 MB</p>
+
+            <div id="slider-msg"></div>
+
+            <div class="slider-grid" id="admin-contenido-slider">
+                <p class="aviso">Cargando...</p>
+            </div>
+        </section>
+
+        <!-- Modal de modificación de usuario -->
+        <div class="modal-overlay" id="modal-usuario" aria-hidden="true">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-usuario-titulo">
+                <button type="button" class="modal-cerrar" id="u-cerrar" aria-label="Cerrar">&times;</button>
+                <h2 class="modal-titulo" id="modal-usuario-titulo">Modificar usuario</h2>
+                <form id="form-usuario" novalidate>
+                    <input type="hidden" id="u-id" value="">
+
+                    <label class="modal-campo" for="u-nombre">Nombre</label>
+                    <input type="text" id="u-nombre" class="modal-input" placeholder="Nombre completo" required>
+
+                    <label class="modal-campo" for="u-usuario">Usuario</label>
+                    <input type="text" id="u-usuario" class="modal-input" placeholder="usuario" autocomplete="off" required>
+
+                    <label class="modal-campo" for="u-correo">Correo electrónico</label>
+                    <input type="email" id="u-correo" class="modal-input" placeholder="correo@ejemplo.com" autocomplete="off" required>
+
+                    <label class="modal-campo" for="u-rol">Rol</label>
+                    <select id="u-rol" class="modal-input" required>
+                        <option value="1">administrador</option>
+                        <option value="2">cliente</option>
+                        <option value="3">vendedor</option>
+                    </select>
+
+                    <label class="modal-campo" for="u-clave">Nueva contraseña (opcional)</label>
+                    <input type="password" id="u-clave" class="modal-input" placeholder="Déjala vacía para no cambiarla" autocomplete="new-password">
+
+                    <label class="modal-campo" for="u-clave2">Repetir contraseña</label>
+                    <input type="password" id="u-clave2" class="modal-input" placeholder="Repite la contraseña" autocomplete="new-password">
+
+                    <div id="u-msg"></div>
+
+                    <div class="modal-acciones">
+                        <button type="button" class="filtro-boton filtro-boton-secundario" id="u-cancelar">Cancelar</button>
+                        <button type="submit" class="filtro-boton">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de producto -->
+        <div class="modal-overlay" id="modal-producto" aria-hidden="true">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-producto-titulo">
+                <button type="button" class="modal-cerrar" id="p-cerrar" aria-label="Cerrar">&times;</button>
+                <h2 class="modal-titulo" id="modal-producto-titulo">Agregar producto</h2>
+                <form id="form-producto" novalidate>
+                    <input type="hidden" id="p-id" value="">
+
+                    <label class="modal-campo" for="p-nombre">Nombre del producto</label>
+                    <input type="text" id="p-nombre" class="modal-input" placeholder="Ej: Teclado mecánico RGB" required>
+
+                    <label class="modal-campo" for="p-descripcion">Descripción</label>
+                    <textarea id="p-descripcion" class="modal-input modal-textarea" rows="3"></textarea>
+
+                    <label class="modal-campo" for="p-precio">Precio ($)</label>
+                    <input type="number" id="p-precio" class="modal-input" step="0.01" min="0" required>
+
+                    <label class="modal-campo" for="p-existencia">Existencia</label>
+                    <input type="number" id="p-existencia" class="modal-input" min="0" required>
+
+                    <label class="modal-campo" for="p-categoria">Categoría</label>
+                    <select id="p-categoria" class="modal-input" required></select>
+
+                    <label class="modal-campo" for="p-marca">Marca (opcional)</label>
+                    <input type="text" id="p-marca" class="modal-input" placeholder="Ej: Asus, HP, Samsung...">
+
+                    <label class="modal-campo" for="p-tipo">Tipo (opcional)</label>
+                    <input type="text" id="p-tipo" class="modal-input" placeholder="Ej: Laptops, USB, Accesorios...">
+
+                    <label class="modal-campo" for="p-imagen">Imagen (archivo dentro de imagenes/productos/)</label>
+                    <input type="text" id="p-imagen" class="modal-input" placeholder="Ej: teclado.jpg (vacío = placeholder)">
+
+                    <div id="p-msg"></div>
+
+                    <div class="modal-acciones">
+                        <button type="button" class="filtro-boton filtro-boton-secundario" id="p-cancelar">Cancelar</button>
+                        <button type="submit" class="filtro-boton">Guardar producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="../includes/footer.html" -->
+</body>
+</html>

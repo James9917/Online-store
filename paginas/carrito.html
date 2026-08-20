@@ -1,0 +1,36 @@
+<!-- Copyright (C) 2026 James Shewbridge - Licensed under GPL v3.0 -->
+<!--#include virtual="../includes/head.html" -->
+    <title>Tienda - Carrito</title>
+    <meta name="description" content="Revisa los productos de tu carrito en Tienda.">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Scripts -->
+    <script src="../js/app.js" defer></script>
+    <script src="../js/carrito.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación: se generan desde js/app.js -->
+    <div id="app-header"></div>
+
+    <!-- Contenido principal -->
+    <main class="contenido" id="contenido">
+        <nav class="miga" id="miga">
+            <a href="../index.html">Inicio</a><span>/</span><span>Carrito</span>
+        </nav>
+
+        <h1 class="titulo-pagina">Tu carrito</h1>
+
+        <p class="catalogo-info" id="aviso"></p>
+
+        <!-- Listado del carrito -->
+        <div id="carrito">
+            <p class="aviso">Cargando carrito...</p>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <!--#include virtual="../includes/footer.html" -->
+</body>
+</html>
